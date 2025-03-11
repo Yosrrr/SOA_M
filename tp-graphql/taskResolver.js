@@ -49,7 +49,9 @@ const taskResolver = {
         },
         changeDescription: (_, { id, description }) => {
             const task = tasks.find(task => task.id === id);
-            
+            if (!task) {
+                throw new Error(`Task with ID ${id} not found`);
+            }
             task.description = description;
             return task;
         },
