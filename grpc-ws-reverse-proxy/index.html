@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket</title>
+</head>
+<body>
+    <h1>Chat WebSocket</h1>
+    <input type="text" id="messageInput" placeholder="Tapez un message..." />
+    <button onclick="sendMessage()">Envoyer</button>
+    <button onclick="getHistory()">Voir l'historique</button>
+    <ul id="messages"></ul>
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');
+
+        ws.onmessage = (event) => {
+            const msg = JSON.parse(event.data);
+            const li = document.createElement("li");
+            li.textContent = JSON.stringify(msg);
+            document.getElementById("messages").appendChild(li);
+        };
+
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            ws.send(JSON.stringify({ sender_id: "user1", content: input.value }));
+            input.value = "";
+        }
+
+        function getHistory() {
+            ws.send(JSON.stringify({ type: "history", room_id: "default" }));
+        }
+    </script>
+</body>
+</html>
