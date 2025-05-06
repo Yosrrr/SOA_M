@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-database-app",
+  "version": "1.0.0",
+  "description": "A Node.js application with database integration using MongoDB or PostgreSQL.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9", // For MongoDB
+    "pg": "^8.5.1", // For PostgreSQL
+    "pg-hstore": "^2.3.4", // For PostgreSQL
+    "sequelize": "^6.3.5", // For PostgreSQL
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "author": "Your Name",
+  "license": "ISC"
+}
