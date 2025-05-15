@@ -1,0 +1,20 @@
+syntax = "proto3";
+package payment;
+
+message PaymentRequest {
+    double amount = 1;
+    string currency = 2;
+    string source = 3; // ID de la méthode de paiement (ex. Stripe)
+}
+
+message PaymentResponse {
+    string status = 1;
+    string paymentId = 2;
+    double amount = 3;
+    string currency = 4;
+    string error = 5;
+}
+
+service PaymentService {
+    rpc ProcessPayment(PaymentRequest) returns (PaymentResponse);
+}

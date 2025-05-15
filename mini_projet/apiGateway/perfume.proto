@@ -1,0 +1,28 @@
+syntax = "proto3";
+package perfume;
+
+message Perfume {
+    string id = 1;
+    string name = 2;
+    string brand = 3;
+    string fragranceNotes = 4;
+}
+
+message GetPerfumeRequest {
+    string perfume_id = 1;
+}
+
+message GetPerfumeResponse {
+    Perfume perfume = 1;
+}
+
+message SearchPerfumesRequest {}
+
+message SearchPerfumesResponse {
+    repeated Perfume perfumes = 1;
+}
+
+service PerfumeService {
+    rpc GetPerfume(GetPerfumeRequest) returns (GetPerfumeResponse);
+    rpc SearchPerfumes(SearchPerfumesRequest) returns (SearchPerfumesResponse);
+}

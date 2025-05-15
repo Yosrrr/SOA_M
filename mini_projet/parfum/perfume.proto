@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package perfume;
+
+service PerfumeService {
+    rpc GetPerfume (GetPerfumeRequest) returns (GetPerfumeResponse);
+    rpc SearchPerfumes (SearchPerfumesRequest) returns (SearchPerfumesResponse);
+    rpc CreatePerfume (CreatePerfumeRequest) returns (CreatePerfumeResponse);
+    rpc UpdatePerfume (UpdatePerfumeRequest) returns (UpdatePerfumeResponse);
+    rpc DeletePerfume (DeletePerfumeRequest) returns (DeletePerfumeResponse);
+}
+
+message GetPerfumeRequest {
+    string perfume_id = 1;
+}
+
+message GetPerfumeResponse {
+    Perfume perfume = 1;
+}
+
+message SearchPerfumesRequest {}
+
+message SearchPerfumesResponse {
+    repeated Perfume perfumes = 1;
+}
+
+message CreatePerfumeRequest {
+    string id = 1;
+    string name = 2;
+    string brand = 3;
+    string fragranceNotes = 4;
+}
+
+message CreatePerfumeResponse {
+    Perfume perfume = 1;
+}
+
+message UpdatePerfumeRequest {
+    string id = 1;
+    string name = 2;
+    string brand = 3;
+    string fragranceNotes = 4;
+}
+
+message UpdatePerfumeResponse {
+    Perfume perfume = 1;
+}
+
+message DeletePerfumeRequest {
+    string id = 1;
+}
+
+message DeletePerfumeResponse {
+    Perfume perfume = 1;
+}
+
+message Perfume {
+    string id = 1;
+    string name = 2;
+    string brand = 3;
+    string fragranceNotes = 4;
+}

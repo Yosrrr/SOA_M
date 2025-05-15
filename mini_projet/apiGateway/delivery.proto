@@ -1,0 +1,17 @@
+syntax = "proto3";
+package delivery;
+
+message ShipmentRequest {
+    string orderId = 1;
+    string address = 2;
+}
+
+message ShipmentResponse {
+    string status = 1;
+    string trackingId = 2;
+    string error = 3;
+}
+
+service DeliveryService {
+    rpc CreateShipment(ShipmentRequest) returns (ShipmentResponse);
+}
